@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>LeadBlitz — AI Website Audit &amp; Lead Generation for Web Designers</title>
+    <meta name="description" content="Find businesses with outdated websites. AI-score them in seconds. Generate professional audit reports that close deals.">
+    <link rel="canonical" href="https://leadblitz.co/">
+    <meta property="og:site_name" content="LeadBlitz">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://leadblitz.co/">
+    <meta property="og:title" content="LeadBlitz — AI Website Audit & Lead Generation for Web Designers">
+    <meta property="og:description" content="Find businesses with outdated websites. AI-score them in seconds. Generate professional audit reports that close deals.">
+    <meta property="og:image" content="https://leadblitz.co/static/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LeadBlitz — AI Website Audit & Lead Generation for Web Designers">
+    <meta name="twitter:description" content="Find businesses with outdated websites. AI-score them in seconds. Generate professional audit reports that close deals.">
+    <meta name="twitter:image" content="https://leadblitz.co/static/og-image.png">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "LeadBlitz",
+        "url": "https://leadblitz.co",
+        "logo": "https://leadblitz.co/static/favicon.png",
+        "description": "AI-powered lead generation and website audit platform for freelance web designers and agencies.",
+        "sameAs": []
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "LeadBlitz",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "AI-powered website audit and lead generation tool for web designers",
+        "offers": [
+            {"@type": "Offer", "name": "Starter", "price": "15", "priceCurrency": "USD"},
+            {"@type": "Offer", "name": "Professional", "price": "59", "priceCurrency": "USD"},
+            {"@type": "Offer", "name": "Pro Team", "price": "199", "priceCurrency": "USD"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://leadblitz.co/"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is LeadBlitz?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "LeadBlitz is an AI-powered lead generation tool built specifically for freelance web designers and small agencies. It helps you find local businesses with outdated websites, scores their sites using AI, and generates professional audit reports you can send to win new clients."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does LeadBlitz find leads?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "LeadBlitz searches Google Places to discover local businesses in your target area and industry. It then uses AI to score each business's website on a scale of 0-100, analyzing page speed, mobile-friendliness, SEO, SSL security, and overall design quality."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is there a free trial?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! Every new account gets 200 free credits with no credit card required. That's enough to search for leads, score websites, and generate audit reports so you can see the full value of the platform before purchasing additional credits."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What does a website audit report include?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Each audit report covers page speed and performance, mobile responsiveness, SEO fundamentals, SSL security status, and overall design quality. Reports are professionally branded and ready to send directly to potential clients as a PDF."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Who is LeadBlitz designed for?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "LeadBlitz is built for freelance web designers, small web design agencies, and digital marketing consultants who do outbound prospecting. If you sell website design, redesign, or maintenance services to local businesses, LeadBlitz helps you find and convert the right prospects."
+                }
+            }
+        ]
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f0a1a;
+            color: #e2e0ea;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        .landing-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(15, 10, 26, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.15);
+        }
+        .landing-nav-container {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 24px;
+        }
+        .landing-brand {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 1.4rem; font-weight: 700;
+        }
+        .brand-icon { font-size: 1.5rem; }
+        .landing-nav-links {
+            display: flex; align-items: center; gap: 24px;
+        }
+        .landing-nav-links a {
+            font-size: 0.9rem; color: #a09cb0; transition: color 0.2s;
+        }
+        .landing-nav-links a:hover { color: #fff; }
+        .btn-outline {
+            padding: 8px 20px; border-radius: 8px;
+            border: 1px solid rgba(124, 58, 237, 0.5); color: #c4b5fd;
+            font-weight: 500; font-size: 0.9rem; cursor: pointer;
+            background: transparent; transition: all 0.2s;
+        }
+        .btn-outline:hover { background: rgba(124, 58, 237, 0.15); color: #fff; }
+        .btn-primary {
+            padding: 8px 20px; border-radius: 8px;
+            background: linear-gradient(135deg, #7C3AED, #a855f7);
+            color: #fff; font-weight: 600; font-size: 0.9rem;
+            border: none; cursor: pointer; transition: all 0.2s;
+        }
+        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4); }
+
+        .hero-section {
+            padding: 140px 24px 80px;
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+            align-items: center;
+        }
+        .hero-badge {
+            display: inline-block; padding: 6px 16px; border-radius: 20px;
+            background: rgba(124, 58, 237, 0.15); color: #a78bfa;
+            font-size: 0.85rem; font-weight: 600; margin-bottom: 20px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+        .hero-title {
+            font-size: 3.2rem; font-weight: 800; line-height: 1.15;
+            color: #fff; margin-bottom: 20px;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #7C3AED, #F97316);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-subtitle {
+            font-size: 1.15rem; line-height: 1.7; color: #a09cb0;
+            margin-bottom: 16px; max-width: 520px;
+        }
+        .hero-supporting {
+            font-size: 1rem; color: #c4b5fd; margin-bottom: 32px;
+            font-weight: 600; font-style: italic;
+        }
+        .hero-cta {
+            display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;
+        }
+        .hero-btn-primary {
+            padding: 14px 32px; border-radius: 12px;
+            background: linear-gradient(135deg, #7C3AED, #a855f7);
+            color: #fff; font-weight: 700; font-size: 1rem;
+            border: none; cursor: pointer; transition: all 0.2s;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .hero-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5);
+        }
+        .hero-btn-secondary {
+            padding: 14px 32px; border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #e2e0ea; font-weight: 600; font-size: 1rem;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .hero-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+        .hero-trust {
+            display: flex; gap: 20px; font-size: 0.85rem; color: #8b86a0;
+        }
+
+        .hero-visual {
+            display: flex; justify-content: center;
+        }
+        .hero-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px; padding: 24px; width: 100%; max-width: 400px;
+        }
+        .hero-card-header {
+            display: flex; align-items: center; gap: 8px;
+            font-weight: 600; color: #fff; margin-bottom: 16px; font-size: 0.95rem;
+        }
+        .status-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: #22c55e; display: inline-block;
+        }
+        .hero-card-score {
+            text-align: center; margin-bottom: 16px;
+        }
+        .score-circle {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 80px; height: 80px; border-radius: 50%;
+            background: rgba(239, 68, 68, 0.15); border: 3px solid #ef4444;
+            color: #ef4444; font-weight: 800; font-size: 1.3rem;
+        }
+        .score-label {
+            font-size: 0.8rem; color: #8b86a0; margin-top: 8px;
+        }
+        .hero-tech-pills {
+            display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; justify-content: center;
+        }
+        .hero-pill {
+            padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600;
+        }
+        .hero-pill-red { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+        .hero-pill-amber { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+        .hero-pill-green { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+        .hero-card-insights { display: flex; flex-direction: column; gap: 8px; }
+        .insight-item {
+            display: flex; align-items: flex-start; gap: 10px;
+            padding: 10px 12px; border-radius: 8px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .insight-icon { font-size: 1rem; flex-shrink: 0; }
+        .insight-main { font-size: 0.82rem; color: #d1cde0; display: block; }
+        .insight-sub { font-size: 0.78rem; color: #8b86a0; display: block; margin-top: 2px; }
+
+        .steps-section {
+            padding: 80px 24px;
+            max-width: 1000px; margin: 0 auto;
+        }
+        .section-header {
+            text-align: center; margin-bottom: 60px;
+        }
+        .section-badge {
+            display: inline-block; padding: 6px 16px; border-radius: 20px;
+            background: rgba(124, 58, 237, 0.12); color: #a78bfa;
+            font-size: 0.82rem; font-weight: 600; margin-bottom: 16px;
+            border: 1px solid rgba(124, 58, 237, 0.25);
+        }
+        .section-title {
+            font-size: 2.4rem; font-weight: 800; color: #fff; line-height: 1.2;
+        }
+        .section-subtitle {
+            font-size: 1.05rem; color: #8b86a0; margin-top: 12px;
+        }
+
+        .steps-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+        }
+        .step-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px; padding: 28px 20px; text-align: center;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .step-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(124, 58, 237, 0.3);
+        }
+        .step-emoji {
+            font-size: 2.2rem; margin-bottom: 16px; display: block;
+        }
+        .step-card h3 {
+            font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 8px;
+        }
+        .step-card p {
+            font-size: 0.88rem; color: #8b86a0; line-height: 1.6;
+        }
+
+        .waitlist-section {
+            padding: 80px 24px;
+            max-width: 560px; margin: 0 auto;
+        }
+        .waitlist-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(124, 58, 237, 0.25);
+            border-radius: 20px; padding: 40px 32px; text-align: center;
+        }
+        .waitlist-card h2 {
+            font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 8px;
+        }
+        .waitlist-card .sub {
+            font-size: 0.95rem; color: #8b86a0; margin-bottom: 28px;
+        }
+        .waitlist-form {
+            display: flex; flex-direction: column; gap: 12px;
+        }
+        .waitlist-form input {
+            padding: 14px 16px; border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.06); color: #fff;
+            font-size: 0.95rem; font-family: inherit; outline: none;
+            transition: border-color 0.2s;
+        }
+        .waitlist-form input:focus { border-color: #7C3AED; }
+        .waitlist-form input::placeholder { color: #6b6780; }
+        .waitlist-form button {
+            padding: 14px; border-radius: 10px;
+            background: linear-gradient(135deg, #7C3AED, #a855f7);
+            color: #fff; font-weight: 700; font-size: 1rem;
+            border: none; cursor: pointer; transition: all 0.2s;
+        }
+        .waitlist-form button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 24px rgba(124, 58, 237, 0.45);
+        }
+        .waitlist-form button:disabled {
+            opacity: 0.6; cursor: not-allowed; transform: none;
+        }
+        .waitlist-msg {
+            margin-top: 16px; font-size: 0.9rem; min-height: 20px;
+        }
+        .waitlist-msg.success { color: #22c55e; }
+        .waitlist-msg.error { color: #ef4444; }
+        .waitlist-fine { font-size: 0.8rem; color: #6b6780; margin-top: 12px; }
+
+        .pricing-section {
+            padding: 80px 24px;
+            max-width: 1100px; margin: 0 auto;
+        }
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+        }
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px; padding: 32px 24px; text-align: center;
+            position: relative; transition: transform 0.2s, border-color 0.2s;
+        }
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(124, 58, 237, 0.3);
+        }
+        .pricing-card.featured {
+            border-color: #7C3AED;
+            background: rgba(124, 58, 237, 0.08);
+        }
+        .pricing-popular {
+            position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(135deg, #7C3AED, #a855f7);
+            color: #fff; padding: 4px 16px; border-radius: 12px;
+            font-size: 0.75rem; font-weight: 700;
+        }
+        .pricing-card h3 {
+            font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 8px;
+        }
+        .pricing-amount {
+            font-size: 2.6rem; font-weight: 800; color: #fff; margin-bottom: 4px;
+        }
+        .pricing-amount small { font-size: 0.9rem; color: #8b86a0; font-weight: 400; }
+        .pricing-features {
+            list-style: none; margin: 20px 0 28px; text-align: left;
+        }
+        .pricing-features li {
+            padding: 8px 0; font-size: 0.9rem; color: #a09cb0;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .pricing-features li::before {
+            content: "\2713"; color: #22c55e; font-weight: 700; font-size: 0.85rem;
+        }
+        .pricing-card .pricing-btn {
+            width: 100%; padding: 12px; border-radius: 10px;
+            font-weight: 600; font-size: 0.95rem; cursor: pointer;
+            border: 1px solid rgba(124, 58, 237, 0.4); color: #c4b5fd;
+            background: transparent; transition: all 0.2s;
+        }
+        .pricing-card .pricing-btn:hover { background: rgba(124, 58, 237, 0.15); }
+        .pricing-card.featured .pricing-btn {
+            background: linear-gradient(135deg, #7C3AED, #a855f7);
+            color: #fff; border: none;
+        }
+        .pricing-card.featured .pricing-btn:hover {
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+        }
+        .pricing-footnote {
+            text-align: center; font-size: 0.82rem; color: #6b6780; margin-top: 24px;
+        }
+
+        .cta-section {
+            padding: 80px 24px; text-align: center;
+        }
+        .cta-section h2 {
+            font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 12px;
+        }
+        .cta-section p {
+            font-size: 1rem; color: #8b86a0; margin-bottom: 28px;
+        }
+
+        .landing-footer {
+            padding: 40px 24px; text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .footer-brand {
+            display: flex; align-items: center; justify-content: center;
+            gap: 8px; font-size: 1.2rem; font-weight: 700; margin-bottom: 12px;
+        }
+        .footer-links {
+            display: flex; gap: 20px; justify-content: center; margin-bottom: 16px;
+        }
+        .footer-links a { font-size: 0.85rem; color: #6b6780; }
+        .footer-links a:hover { color: #a78bfa; }
+        .footer-legal { font-size: 0.8rem; color: #4b4660; }
+
+        @media (max-width: 768px) {
+            .hero-section { grid-template-columns: 1fr; padding: 120px 20px 60px; gap: 40px; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-visual { order: -1; }
+            .hero-trust { flex-wrap: wrap; gap: 12px; }
+            .steps-grid { grid-template-columns: 1fr 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .landing-nav-links a:not(.btn-outline):not(.btn-primary) { display: none; }
+            .section-title { font-size: 1.8rem; }
+        }
+        @media (max-width: 480px) {
+            .steps-grid { grid-template-columns: 1fr; }
+            .hero-cta { flex-direction: column; }
+            .hero-btn-primary, .hero-btn-secondary { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="landing-nav">
+        <div class="landing-nav-container">
+            <div class="landing-brand">
+                <span class="brand-icon">&#9889;</span>
+                <span><span style="color: #7C3AED; font-weight: 700;">Lead</span><span style="color: #F97316; font-weight: 700;">Blitz</span></span>
+            </div>
+            <div class="landing-nav-links">
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="/blog">Blog</a>
+                <a href="#faq">FAQ</a>
+                <a href="/login" class="btn-outline">Login</a>
+                <a href="/login?register=1" class="btn-primary">Start Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-badge">Powered by AI</div>
+            <h1 class="hero-title">Instant Website Audits That <span class="gradient-text">Sell For You</span></h1>
+            <p class="hero-subtitle">
+                Find businesses with outdated websites. AI-score them in seconds. Generate professional audit reports that close deals.
+            </p>
+            <p class="hero-supporting">No manual research. No guesswork. Just proof.</p>
+            <div class="hero-cta">
+                <a href="/login?register=1" class="hero-btn-primary">
+                    Start Free Trial <span>&#8594;</span>
+                </a>
+                <a href="#features" class="hero-btn-secondary">See How It Works</a>
+            </div>
+            <div class="hero-trust">
+                <span>&#10003; 200 free credits</span>
+                <span>&#10003; No credit card required</span>
+                <span>&#10003; Cancel anytime</span>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-card">
+                <div class="hero-card-header">
+                    <span class="status-dot"></span>
+                    Client Audit Report Ready
+                </div>
+                <div class="hero-card-score">
+                    <div class="score-circle">28/100</div>
+                    <div class="score-label">Needs significant improvement</div>
+                </div>
+                <div class="hero-tech-pills">
+                    <span class="hero-pill hero-pill-red">No SSL</span>
+                    <span class="hero-pill hero-pill-red">Not Responsive</span>
+                    <span class="hero-pill hero-pill-amber">WordPress 5.2</span>
+                    <span class="hero-pill hero-pill-red">No Analytics</span>
+                    <span class="hero-pill hero-pill-green">Favicon</span>
+                </div>
+                <div class="hero-card-insights">
+                    <div class="insight-item">
+                        <span class="insight-icon">&#9888;&#65039;</span>
+                        <div>
+                            <span class="insight-main">WordPress 5.2 has known security vulnerabilities</span>
+                            <span class="insight-sub">&#8594; Upgrade urgently recommended</span>
+                        </div>
+                    </div>
+                    <div class="insight-item">
+                        <span class="insight-icon">&#9888;&#65039;</span>
+                        <div>
+                            <span class="insight-main">No Google Analytics installed</span>
+                            <span class="insight-sub">&#8594; Zero visibility into visitor behaviour</span>
+                        </div>
+                    </div>
+                    <div class="insight-item">
+                        <span class="insight-icon">&#128196;</span>
+                        <div>
+                            <span class="insight-main">One-click professional audit report ready to send</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="steps-section">
+        <div class="section-header">
+            <span class="section-badge">How It Works</span>
+            <h2 class="section-title">From search to sale in <span class="gradient-text">4 simple steps</span></h2>
+            <p class="section-subtitle">Everything you need to close more deals</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card">
+                <span class="step-emoji">&#128269;</span>
+                <h3>Search</h3>
+                <p>Enter a business type and location. Find businesses with underperforming websites instantly.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-emoji">&#9889;</span>
+                <h3>Score</h3>
+                <p>Our AI analyses each website across 12+ dimensions and delivers a detailed score in seconds.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-emoji">&#128203;</span>
+                <h3>Report</h3>
+                <p>Generate professional, client-ready audit reports branded with your agency name.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-emoji">&#128640;</span>
+                <h3>Convert</h3>
+                <p>Send AI-personalised outreach via email or SMS and manage deals through your CRM pipeline.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="waitlist" class="waitlist-section">
+        <div class="waitlist-card">
+            <h2>Join the Waitlist</h2>
+            <p class="sub">Be first in line for early access to LeadBlitz.</p>
+            <form class="waitlist-form" id="waitlistForm" onsubmit="submitWaitlist(event)">
+                <input type="email" id="wlEmail" placeholder="Your email address" required>
+                <input type="text" id="wlName" placeholder="Your name (optional)">
+                <button type="submit" id="wlBtn">Join the Waitlist &#8594;</button>
+            </form>
+            <div class="waitlist-msg" id="wlMsg"></div>
+            <p style="font-size: 13px; color: #888; margin-top: 12px;">By signing up, you agree to our <a href="/privacy" style="color: #a78bfa; text-decoration: underline;">Privacy Policy</a>.</p>
+            <p class="waitlist-fine">No spam. We'll email you when early access opens.</p>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing-section">
+        <div class="section-header">
+            <span class="section-badge">Pricing</span>
+            <h2 class="section-title">Simple, transparent <span class="gradient-text">credit-based pricing</span></h2>
+            <p class="section-subtitle">Start free with 200 credits. Buy more as you need them.</p>
+        </div>
+
+        <div class="founding-banner" id="foundingBanner" style="max-width: 900px; margin: 0 auto 32px; background: linear-gradient(135deg, #7C3AED 0%, #F97316 100%); border-radius: 16px; padding: 28px 32px; text-align: center; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; background: rgba(255,255,255,0.08); border-radius: 50%;"></div>
+            <div style="position: relative; z-index: 1;">
+                <span style="background: rgba(255,255,255,0.2); padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: white; letter-spacing: 0.5px;">LIMITED OFFER</span>
+                <h3 style="color: white; font-size: 1.5rem; margin: 12px 0 6px; font-weight: 700;">Founding Member - $99</h3>
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 4px;">2,000 credits at 50% off Pro Team price</p>
+                <p style="color: #fbbf24; font-weight: 600; font-size: 1.1rem; margin-bottom: 16px;" id="foundingSlotsText">Loading availability...</p>
+                <button class="pricing-btn" onclick="handlePricingClick('founding_member')" style="background: white; color: #7C3AED; border: none; padding: 14px 36px; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">Claim Your Spot</button>
+            </div>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Starter</h3>
+                <div class="pricing-amount">$15</div>
+                <ul class="pricing-features">
+                    <li>100 credits</li>
+                    <li>AI lead scoring</li>
+                    <li>Email outreach</li>
+                    <li>SMS campaigns</li>
+                    <li>CRM pipeline</li>
+                </ul>
+                <button class="pricing-btn" onclick="handlePricingClick('starter')">Get Started</button>
+            </div>
+            <div class="pricing-card featured">
+                <div class="pricing-popular">Most Popular</div>
+                <h3>Professional</h3>
+                <div class="pricing-amount">$59</div>
+                <ul class="pricing-features">
+                    <li>500 credits</li>
+                    <li>Everything in Starter</li>
+                    <li>Priority support</li>
+                </ul>
+                <button class="pricing-btn" onclick="handlePricingClick('professional')">Get Started</button>
+            </div>
+            <div class="pricing-card">
+                <h3>Pro Team</h3>
+                <div class="pricing-amount">$199</div>
+                <ul class="pricing-features">
+                    <li>2,000 credits</li>
+                    <li>Everything in Professional</li>
+                    <li>Dedicated support</li>
+                </ul>
+                <button class="pricing-btn" onclick="handlePricingClick('pro_team')">Get Started</button>
+            </div>
+        </div>
+        <p class="pricing-footnote">One-time credit purchases. No subscription required. Optional Hunter feature requires your own API key.</p>
+    </section>
+
+    <script>
+        async function loadFoundingSlots() {
+            try {
+                const res = await fetch('/api/founding-member-slots');
+                if (res.ok) {
+                    const data = await res.json();
+                    const el = document.getElementById('foundingSlotsText');
+                    const banner = document.getElementById('foundingBanner');
+                    if (data.remaining <= 0) {
+                        el.textContent = 'SOLD OUT';
+                        banner.querySelector('button').disabled = true;
+                        banner.querySelector('button').textContent = 'Sold Out';
+                        banner.querySelector('button').style.opacity = '0.5';
+                    } else {
+                        el.textContent = 'Only ' + data.remaining + ' of ' + data.max_slots + ' spots left!';
+                    }
+                }
+            } catch (e) { console.error(e); }
+        }
+        loadFoundingSlots();
+
+        async function handlePricingClick(planName) {
+            try {
+                const authRes = await fetch('/api/auth/me');
+                if (authRes.ok) {
+                    const btn = event.target;
+                    btn.disabled = true;
+                    btn.textContent = 'Redirecting...';
+                    const res = await fetch('/api/create-checkout-session', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ plan_name: planName })
+                    });
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data.url) window.location.href = data.url;
+                    } else {
+                        const err = await res.json();
+                        alert(err.detail || 'Failed to start checkout');
+                        btn.disabled = false;
+                        btn.textContent = 'Get Started';
+                    }
+                } else {
+                    window.location.href = '/login?register=1&plan=' + planName;
+                }
+            } catch (e) {
+                alert('Error connecting to payment system. Please try again.');
+            }
+        }
+    </script>
+
+    <section style="padding: 80px 24px; max-width: 1200px; margin: 0 auto;">
+        <h2 style="text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 8px; color: #fff;">From the Blog</h2>
+        <p style="text-align: center; color: #a09cb0; margin-bottom: 48px; font-size: 1.05rem;">Tips and strategies for winning more web design clients</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+            <a href="/blog/cold-email-that-gets-replies" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(124,58,237,0.15); border-radius: 12px; padding: 28px; text-decoration: none; transition: all 0.3s ease; display: block;">
+                <h3 style="font-size: 1.15rem; font-weight: 600; color: #fff; margin-bottom: 12px; line-height: 1.4;">The Cold Email That Actually Gets Replies</h3>
+                <p style="color: #a09cb0; font-size: 0.92rem; line-height: 1.6; margin-bottom: 16px;">You've sent fifty cold emails this week. Two replies &#8212; one unsubscribe. Here's why, and how to write outreach that actually gets responses.</p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="color: #a78bfa; font-size: 0.85rem;">8 min read</span>
+                    <span style="color: #a78bfa; font-size: 0.9rem; font-weight: 500;">Read More &#8594;</span>
+                </div>
+            </a>
+            <a href="/blog/sms-fastest-route" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(124,58,237,0.15); border-radius: 12px; padding: 28px; text-decoration: none; transition: all 0.3s ease; display: block;">
+                <h3 style="font-size: 1.15rem; font-weight: 600; color: #fff; margin-bottom: 12px; line-height: 1.4;">Skip the Inbox: Why SMS Is the Fastest Route to Local Business Owners</h3>
+                <p style="color: #a09cb0; font-size: 0.92rem; line-height: 1.6; margin-bottom: 16px;">SMS has a 98% open rate. Email has 20%. Here's how freelance web designers can use text messages to start conversations that email never could.</p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="color: #a78bfa; font-size: 0.85rem;">7 min read</span>
+                    <span style="color: #a78bfa; font-size: 0.9rem; font-weight: 500;">Read More &#8594;</span>
+                </div>
+            </a>
+            <a href="/blog/free-audit-strategy" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(124,58,237,0.15); border-radius: 12px; padding: 28px; text-decoration: none; transition: all 0.3s ease; display: block;">
+                <h3 style="font-size: 1.15rem; font-weight: 600; color: #fff; margin-bottom: 12px; line-height: 1.4;">The Free Audit Strategy: How Giving Away Your Expertise Wins You Clients</h3>
+                <p style="color: #a09cb0; font-size: 0.92rem; line-height: 1.6; margin-bottom: 16px;">You're a stranger asking for trust and money. Here's how leading with a free website audit flips the dynamic and makes clients come to you.</p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="color: #a78bfa; font-size: 0.85rem;">8 min read</span>
+                    <span style="color: #a78bfa; font-size: 0.9rem; font-weight: 500;">Read More &#8594;</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="faq" style="max-width: 800px; margin: 0 auto; padding: 80px 24px;">
+        <h2 style="text-align: center; font-size: 2rem; font-weight: 800; margin-bottom: 12px;">
+            Frequently Asked <span style="background: linear-gradient(135deg, #7C3AED, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Questions</span>
+        </h2>
+        <p style="text-align: center; color: #a09cb0; margin-bottom: 48px;">Everything you need to know about LeadBlitz</p>
+
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <details style="background: rgba(255,255,255,0.04); border: 1px solid rgba(124,58,237,0.2); border-radius: 12px; overflow: hidden;">
+                <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 1.05rem; color: #fff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    What is LeadBlitz?
+                    <span style="color: #a78bfa; font-size: 1.2rem; transition: transform 0.2s;">+</span>
+                </summary>
+                <div style="padding: 0 24px 20px; color: #a09cb0; line-height: 1.7; font-size: 0.95rem;">
+                    LeadBlitz is an AI-powered lead generation tool built specifically for freelance web designers and small agencies. It helps you find local businesses with outdated websites, scores their sites using AI, and generates professional audit reports you can send to win new clients.
+                </div>
+            </details>
+
+            <details style="background: rgba(255,255,255,0.04); border: 1px solid rgba(124,58,237,0.2); border-radius: 12px; overflow: hidden;">
+                <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 1.05rem; color: #fff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    How does LeadBlitz find leads?
+                    <span style="color: #a78bfa; font-size: 1.2rem; transition: transform 0.2s;">+</span>
+                </summary>
+                <div style="padding: 0 24px 20px; color: #a09cb0; line-height: 1.7; font-size: 0.95rem;">
+                    LeadBlitz searches Google Places to discover local businesses in your target area and industry. It then uses AI to score each business's website on a scale of 0-100, analyzing page speed, mobile-friendliness, SEO, SSL security, and overall design quality. Low-scoring businesses are your best prospects.
+                </div>
+            </details>
+
+            <details style="background: rgba(255,255,255,0.04); border: 1px solid rgba(124,58,237,0.2); border-radius: 12px; overflow: hidden;">
+                <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 1.05rem; color: #fff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    Is there a free trial?
+                    <span style="color: #a78bfa; font-size: 1.2rem; transition: transform 0.2s;">+</span>
+                </summary>
+                <div style="padding: 0 24px 20px; color: #a09cb0; line-height: 1.7; font-size: 0.95rem;">
+                    Yes! Every new account gets 200 free credits with no credit card required. That's enough to search for leads, score websites, and generate audit reports so you can see the full value of the platform before purchasing additional credits.
+                </div>
+            </details>
+
+            <details style="background: rgba(255,255,255,0.04); border: 1px solid rgba(124,58,237,0.2); border-radius: 12px; overflow: hidden;">
+                <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 1.05rem; color: #fff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    What does a website audit report include?
+                    <span style="color: #a78bfa; font-size: 1.2rem; transition: transform 0.2s;">+</span>
+                </summary>
+                <div style="padding: 0 24px 20px; color: #a09cb0; line-height: 1.7; font-size: 0.95rem;">
+                    Each audit report covers page speed and performance, mobile responsiveness, SEO fundamentals, SSL security status, and overall design quality. Reports are professionally branded and ready to send directly to potential clients as a PDF, making it easy to demonstrate your expertise and start a conversation.
+                </div>
+            </details>
+
+            <details style="background: rgba(255,255,255,0.04); border: 1px solid rgba(124,58,237,0.2); border-radius: 12px; overflow: hidden;">
+                <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 1.05rem; color: #fff; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    Who is LeadBlitz designed for?
+                    <span style="color: #a78bfa; font-size: 1.2rem; transition: transform 0.2s;">+</span>
+                </summary>
+                <div style="padding: 0 24px 20px; color: #a09cb0; line-height: 1.7; font-size: 0.95rem;">
+                    LeadBlitz is built for freelance web designers, small web design agencies, and digital marketing consultants who do outbound prospecting. If you sell website design, redesign, or maintenance services to local businesses, LeadBlitz helps you find and convert the right prospects.
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Ready to grow your agency?</h2>
+        <p>Start finding high-quality leads today. No credit card required.</p>
+        <a href="/login?register=1" class="hero-btn-primary">
+            Start Your Free Trial <span>&#8594;</span>
+        </a>
+    </section>
+
+    <footer class="landing-footer">
+        <div class="footer-brand">
+            <span class="brand-icon">&#9889;</span>
+            <span><span style="color: #7C3AED; font-weight: 700;">Lead</span><span style="color: #F97316; font-weight: 700;">Blitz</span></span>
+        </div>
+        <div class="footer-links">
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="/blog">Blog</a>
+            <a href="/privacy" style="color: #aaa; font-size: 14px;">Privacy Policy</a>
+            <a href="/terms" style="color: #aaa; font-size: 14px;">Terms of Service</a>
+            <a href="/login">Login</a>
+        </div>
+        <div class="footer-legal">
+            <p>GDPR & CAN-SPAM Compliant</p>
+        </div>
+    </footer>
+
+    <script>
+    async function submitWaitlist(e) {
+        e.preventDefault();
+        const btn = document.getElementById('wlBtn');
+        const msg = document.getElementById('wlMsg');
+        const email = document.getElementById('wlEmail').value.trim();
+        const name = document.getElementById('wlName').value.trim();
+
+        btn.disabled = true;
+        btn.textContent = 'Joining...';
+        msg.textContent = '';
+        msg.className = 'waitlist-msg';
+
+        try {
+            const res = await fetch('/api/waitlist/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, name })
+            });
+            const data = await res.json();
+            if (res.ok && data.success) {
+                msg.textContent = 'You\'re on the list! We\'ll be in touch soon.';
+                msg.className = 'waitlist-msg success';
+                document.getElementById('waitlistForm').reset();
+            } else {
+                msg.textContent = data.detail || data.error || 'Something went wrong. Please try again.';
+                msg.className = 'waitlist-msg error';
+            }
+        } catch (err) {
+            msg.textContent = 'Network error. Please try again.';
+            msg.className = 'waitlist-msg error';
+        }
+        btn.disabled = false;
+        btn.innerHTML = 'Join the Waitlist &#8594;';
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+    </script>
+</body>
+</html>
