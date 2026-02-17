@@ -3019,7 +3019,23 @@ async function login() {
             if (typeof gtag === 'function') {
                 gtag('event', 'login', { method: 'email' });
             }
-            window.location.href = '/';
+            // Set user data and go directly to dashboard
+            currentUser = data;
+            apiKeysStatus = data.api_keys_status || {};
+            hideLandingPage();
+            hideAuthModal();
+            updateUserUI();
+            loadCredits();
+            checkAdminAccess(data);
+            showPage('dashboard');
+            
+            // Load initial data
+            loadCampaigns();
+            loadLeads();
+            loadAnalytics();
+            loadOAuthStatus();
+            loadEmailSignature();
+            loadEmailTemplates();
         } else {
             document.getElementById('loginError').textContent = data.detail || 'Login failed';
         }
@@ -3057,7 +3073,32 @@ async function register() {
             if (typeof gtag === 'function') {
                 gtag('event', 'sign_up', { method: 'email' });
             }
-            window.location.href = '/';
+            // Set user data and go directly to dashboard
+            currentUser = data;
+            apiKeysStatus = data.api_keys_status || {};
+            hideLandingPage();
+            hideAuthModal();
+            updateUserUI();
+            loadCredits();
+            checkAdminAccess(data);
+            
+            // Show tutorial for new users
+            if (currentUser && currentUser.user && currentUser.user.completed_tutorial === false) {
+                showPage('dashboard');
+                setTimeout(() => {
+                    showTutorialModal();
+                }, 500);
+            } else {
+                showPage('dashboard');
+            }
+            
+            // Load initial data
+            loadCampaigns();
+            loadLeads();
+            loadAnalytics();
+            loadOAuthStatus();
+            loadEmailSignature();
+            loadEmailTemplates();
         } else {
             document.getElementById('registerError').textContent = data.detail || 'Registration failed';
         }
