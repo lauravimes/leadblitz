@@ -2130,7 +2130,7 @@ tbody tr.selected-row td {
 
 /* ===== LANDING PAGE STYLES ===== */
 .landing-page {
-    display: none;
+    display: block;
     min-height: 100vh;
     background: transparent;
     position: relative;
