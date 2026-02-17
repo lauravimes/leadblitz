@@ -2738,7 +2738,7 @@ tbody tr.selected-row td {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.85) 60%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.4) 60%);
     z-index: 1;
 }
 
@@ -2759,7 +2759,7 @@ tbody tr.selected-row td {
 }
 
 .feature-card:hover::before {
-    background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.75) 60%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.3) 60%);
 }
 
 .feature-discovery {
@@ -2866,12 +2866,12 @@ tbody tr.selected-row td {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.85) 60%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.4) 60%);
     z-index: 1;
 }
 
 .step-card:hover::before {
-    background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.75) 60%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.3) 60%);
 }
 
 .step-content {
