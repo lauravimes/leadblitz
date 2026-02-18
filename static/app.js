@@ -1397,6 +1397,60 @@ function renderLeadsTable() {
             </td>
         </tr>
     `).join('');
+    
+    // Also render mobile cards for responsive design
+    renderLeadsCards();
+}
+
+function renderLeadsCards() {
+    const cardsContainer = document.getElementById('leadsCards');
+    
+    let leadsToRender = currentLeads;
+    if (needsEmailFilterActive) {
+        leadsToRender = leadsToRender.filter(lead => !lead.email || lead.email === '');
+    }
+    if (sourceFilterActive !== 'all') {
+        leadsToRender = leadsToRender.filter(lead => (lead.source || 'search') === sourceFilterActive);
+    }
+    
+    // Apply sorting
+    leadsToRender = getSortedLeads(leadsToRender);
+
+    if (leadsToRender.length === 0) {
+        cardsContainer.innerHTML = '<div class="mobile-data-card" style="text-align: center; color: #6b7280;">No leads matching filter.</div>';
+        return;
+    }
+
+    cardsContainer.innerHTML = leadsToRender.map(lead => `
+        <div class="mobile-data-card" data-lead-id="${lead.id}">
+            <div class="mobile-card-header">
+                <div class="mobile-card-title">${lead.name}${renderSourceBadge(lead)}</div>
+                <div class="mobile-card-score">${renderScoreWithImportStatus(lead)}</div>
+            </div>
+            <div class="mobile-card-details">
+                <div class="mobile-card-detail">
+                    <strong>Email:</strong>
+                    ${lead.email || 'Add email...'}
+                </div>
+                <div class="mobile-card-detail">
+                    <strong>Phone:</strong>
+                    ${lead.phone || 'Add phone...'}
+                </div>
+                <div class="mobile-card-detail">
+                    <strong>Website:</strong>
+                    ${lead.website ? `<a href="${lead.website.startsWith('http') ? lead.website : 'https://' + lead.website}" target="_blank" rel="noopener noreferrer" style="color: #667eea;">View</a>` : 'N/A'}
+                </div>
+                <div class="mobile-card-detail">
+                    <strong>Address:</strong>
+                    ${lead.address}
+                </div>
+            </div>
+            <div class="mobile-card-actions">
+                <button onclick="selectLead('${lead.id}')" style="background: var(--primary); color: white; border: none; padding: 8px 12px; border-radius: 6px; font-size: 12px; cursor: pointer;">View Details</button>
+                <button onclick="deleteLead('${lead.id}')" style="background: #ef4444; color: white; border: none; padding: 8px 12px; border-radius: 6px; font-size: 12px; cursor: pointer;">Delete</button>
+            </div>
+        </div>
+    `).join('');
 }
 
 function renderSourceBadge(lead) {
