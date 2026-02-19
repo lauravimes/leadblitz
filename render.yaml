@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: leadblitz-staging
+    env: python
+    repo: https://github.com/lauravimes/leadblitz
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    plan: free
+    envVars:
+      - key: SESSION_SECRET
+        sync: false
+      - key: ADMIN_PASSWORD  
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ENCRYPTION_KEY
+        sync: false
+      - key: STRIPE_PUBLISHABLE_KEY
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: GOOGLE_MAPS_API_KEY
+        sync: false
+      - key: GA_MEASUREMENT_ID
+        sync: false
+      - key: BASE_URL
+        value: https://leadblitz-staging.onrender.com
+      - key: CALENDLY_LINK
+        value: https://cal.com/leadblitz/demo
+      - key: FROM_EMAIL
+        value: sh@shapplications.com
