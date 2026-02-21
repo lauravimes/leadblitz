@@ -375,7 +375,8 @@ async def register(request: RegisterRequest):
             value=session_token,
             httponly=True,
             max_age=86400 * 30,
-            samesite="lax"
+            samesite="lax",
+            path="/"
         )
         return response
     finally:
@@ -406,7 +407,8 @@ async def login(request: LoginRequest):
             value=session_token,
             httponly=True,
             max_age=86400 * 30,
-            samesite="lax"
+            samesite="lax",
+            path="/"
         )
         return response
     finally:
