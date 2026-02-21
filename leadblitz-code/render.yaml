@@ -7,6 +7,12 @@ services:
     buildCommand: pip install -r requirements.txt && playwright install chromium
     startCommand: python debug.py
     plan: free
+
+databases:
+  - name: leadblitz-staging-db
+    databaseName: leadblitz
+    user: leadblitz
+    plan: free
     envVars:
       - key: SESSION_SECRET
         sync: false
