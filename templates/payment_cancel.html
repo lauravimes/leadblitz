@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Payment Cancelled - LeadBlitz</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f7fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .cancel-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            max-width: 480px;
+            width: 100%;
+            padding: 48px 40px;
+            text-align: center;
+        }
+        .cancel-icon {
+            width: 80px;
+            height: 80px;
+            background: #f3f4f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 40px;
+            color: #6b7280;
+        }
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: #6b7280;
+            font-size: 1rem;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, #7C3AED, #8b5cf6);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(124,58,237,0.4);
+        }
+        .btn-secondary {
+            display: inline-block;
+            background: white;
+            color: #374151;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid #e5e7eb;
+            transition: all 0.2s;
+        }
+        .btn-secondary:hover {
+            background: #f9fafb;
+        }
+    </style>
+</head>
+<body>
+    <div class="cancel-card">
+        <div class="cancel-icon">&#10005;</div>
+        <h1>Payment Cancelled</h1>
+        <p class="subtitle">No worries! Your account has not been charged. You can try again anytime.</p>
+        <div class="btn-group">
+            <a href="/#pricing" class="btn-primary">View Pricing</a>
+            <a href="/" class="btn-secondary">Go to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>
