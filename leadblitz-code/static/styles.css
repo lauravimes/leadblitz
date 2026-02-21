@@ -2130,10 +2130,20 @@ tbody tr.selected-row td {
 
 /* ===== LANDING PAGE STYLES ===== */
 .landing-page {
-    display: block;
+    display: none;
     min-height: 100vh;
     background: transparent;
     position: relative;
+}
+
+/* Show landing page when active */
+.landing-page.active {
+    display: block;
+}
+
+/* When served on landing/auth routes, show by default via inline style or body class */
+body.landing-route .landing-page {
+    display: block;
 }
 
 .landing-page::before {
@@ -2149,10 +2159,6 @@ tbody tr.selected-row td {
     background-attachment: fixed;
     z-index: -1;
     pointer-events: none;
-}
-
-.landing-page.active {
-    display: block;
 }
 
 /* Landing Navigation */
