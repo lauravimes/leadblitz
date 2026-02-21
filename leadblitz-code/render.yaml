@@ -4,14 +4,8 @@ services:
     env: python
     repo: https://github.com/lauravimes/leadblitz
     branch: master
-    buildCommand: pip install -r requirements.txt && playwright install chromium
-    startCommand: python debug.py
-    plan: free
-
-databases:
-  - name: leadblitz-staging-db
-    databaseName: leadblitz
-    user: leadblitz
+    buildCommand: pip install -r requirements.txt
+    startCommand: python minimal.py
     plan: free
     envVars:
       - key: SESSION_SECRET
