@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're In! - LeadBlitz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a1025 0%, #2d1b4e 30%, #1e1145 70%, #0f0a1a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            color: #fff;
+        }
+        .thankyou-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 48px 40px;
+            max-width: 560px;
+            width: 100%;
+            text-align: center;
+        }
+        .thankyou-emoji { font-size: 3rem; margin-bottom: 16px; }
+        .thankyou-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #c4b5fd, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .thankyou-number {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 24px;
+        }
+        .thankyou-number strong {
+            color: #a78bfa;
+            font-size: 1.5rem;
+        }
+        .thankyou-perks {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin-bottom: 28px;
+            text-align: left;
+        }
+        .thankyou-perks p {
+            color: #e9d5ff;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .share-section {
+            margin-bottom: 24px;
+        }
+        .share-section h3 {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .share-btn-twitter {
+            background: rgba(29, 161, 242, 0.15);
+            color: #1DA1F2;
+            border: 1px solid rgba(29, 161, 242, 0.3);
+        }
+        .share-btn-twitter:hover { background: rgba(29, 161, 242, 0.25); }
+        .share-btn-linkedin {
+            background: rgba(10, 102, 194, 0.15);
+            color: #0A66C2;
+            border: 1px solid rgba(10, 102, 194, 0.3);
+        }
+        .share-btn-linkedin:hover { background: rgba(10, 102, 194, 0.25); }
+        .referral-section {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 24px;
+        }
+        .referral-section label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            display: block;
+            margin-bottom: 6px;
+        }
+        .referral-link {
+            font-size: 0.85rem;
+            color: #c4b5fd;
+            word-break: break-all;
+            cursor: pointer;
+        }
+        .referral-link:hover { text-decoration: underline; }
+        .back-link {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+        .back-link:hover { color: rgba(255, 255, 255, 0.8); }
+        .copy-toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #8b5cf6;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            display: none;
+        }
+        #loadingState { display: block; }
+        #contentState { display: none; }
+        .loading-text {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="thankyou-card">
+        <div id="loadingState">
+            <p class="loading-text">Loading your details...</p>
+        </div>
+        <div id="contentState">
+            <div class="thankyou-emoji">&#127881;</div>
+            <h1 class="thankyou-title">You're In!</h1>
+            <p class="thankyou-number">You're <strong>#<span id="signupNumber">-</span></strong> on the waitlist</p>
+            <div class="thankyou-perks" id="perksSection"></div>
+            <div class="share-section">
+                <h3>Spread the word</h3>
+                <div class="share-buttons">
+                    <a id="twitterShare" href="#" target="_blank" class="share-btn share-btn-twitter">Share on Twitter</a>
+                    <a id="linkedinShare" href="#" target="_blank" class="share-btn share-btn-linkedin">Share on LinkedIn</a>
+                </div>
+            </div>
+            <div class="referral-section">
+                <label>Your referral link</label>
+                <span class="referral-link" id="referralLink" onclick="copyReferralLink()"></span>
+            </div>
+            <a href="/" class="back-link">Back to LeadBlitz</a>
+        </div>
+    </div>
+    <div class="copy-toast" id="copyToast">Copied to clipboard!</div>
+
+    <script>
+        async function loadEntry() {
+            const params = new URLSearchParams(window.location.search);
+            const email = params.get('email');
+            const sessionId = params.get('session_id');
+
+            if (!email) {
+                document.getElementById('loadingState').innerHTML = '<p class="loading-text">No email provided.</p>';
+                return;
+            }
+
+            if (sessionId) {
+                try {
+                    await fetch('/api/waitlist/confirm-payment', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ session_id: sessionId, email: email })
+                    });
+                } catch (e) {}
+                await new Promise(r => setTimeout(r, 500));
+            }
+
+            try {
+                const response = await fetch(`/api/waitlist/entry?email=${encodeURIComponent(email)}`);
+                if (!response.ok) {
+                    document.getElementById('loadingState').innerHTML = '<p class="loading-text">Entry not found. <a href="/" style="color:#a78bfa">Go back</a></p>';
+                    return;
+                }
+                const data = await response.json();
+
+                document.getElementById('signupNumber').textContent = data.signup_number;
+
+                const perks = document.getElementById('perksSection');
+                if (data.tier === 'founding' && data.paid) {
+                    perks.innerHTML = '<p>As a <strong>Founding Member</strong>, you\'ll receive <strong>1,000 free credits</strong> and <strong>50% off your first 3 months</strong>! You\'ll also get your permanent Founding Member badge and priority access.</p>';
+                } else if (data.first_100) {
+                    perks.innerHTML = '<p>You\'ll receive <strong>500 free credits</strong> when we launch! As one of the first 100 members, you\'re getting exclusive early access.</p>';
+                } else {
+                    perks.innerHTML = '<p>We\'ll email you as soon as early access opens. Stay tuned!</p>';
+                }
+
+                const domain = window.location.hostname;
+                const refLink = `https://${domain}/?ref=${data.referral_code}`;
+                document.getElementById('referralLink').textContent = refLink;
+
+                const shareText = encodeURIComponent('Just joined the waitlist for LeadBlitz — instant website audits that sell for you. Check it out:');
+                const shareUrl = encodeURIComponent(refLink);
+                document.getElementById('twitterShare').href = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
+                document.getElementById('linkedinShare').href = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
+
+                document.getElementById('loadingState').style.display = 'none';
+                document.getElementById('contentState').style.display = 'block';
+            } catch (e) {
+                document.getElementById('loadingState').innerHTML = '<p class="loading-text">Something went wrong. <a href="/" style="color:#a78bfa">Go back</a></p>';
+            }
+        }
+
+        function copyReferralLink() {
+            const link = document.getElementById('referralLink').textContent;
+            navigator.clipboard.writeText(link).then(() => {
+                const toast = document.getElementById('copyToast');
+                toast.style.display = 'block';
+                setTimeout(() => { toast.style.display = 'none'; }, 2000);
+            });
+        }
+
+        loadEntry();
+    </script>
+</body>
+</html>
