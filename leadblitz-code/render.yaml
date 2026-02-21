@@ -4,8 +4,8 @@ services:
     env: python
     repo: https://github.com/lauravimes/leadblitz
     branch: master
-    buildCommand: pip install -r requirements.txt
-    startCommand: python minimal.py
+    buildCommand: echo "No dependencies needed"
+    startCommand: python hello.py
     plan: free
     envVars:
       - key: SESSION_SECRET
