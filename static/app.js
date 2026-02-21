@@ -74,7 +74,10 @@ function hideLandingPage() {
     const topNav = document.querySelector('.top-nav');
     const container = document.querySelector('.container');
     
-    if (landingPage) landingPage.classList.remove('active');
+    if (landingPage) {
+        landingPage.classList.remove('active');
+        landingPage.style.display = 'none';
+    }
     if (topNav) topNav.style.display = '';
     if (container) container.style.display = '';
     
