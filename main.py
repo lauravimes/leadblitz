@@ -1178,7 +1178,7 @@ async def api_search(request: SearchRequest, background_tasks: BackgroundTasks, 
         
         updated_campaign = db.get_campaign(campaign.id, user_id=current_user.id)
         
-        if not request.auto_score:
+        if request.auto_score:
             leads_with_websites = [l for l in leads if l.get("website")]
             if leads_with_websites:
                 background_tasks.add_task(auto_score_leads_background, leads_with_websites, current_user.id)

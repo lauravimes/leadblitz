@@ -48,7 +48,7 @@ def fetch_site_safely(url: str, timeout: int = 15, max_retries: int = 3) -> Dict
             'User-Agent': random.choice(user_agents),
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
             'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
-            'Accept-Encoding': 'gzip, deflate, br',
+            'Accept-Encoding': 'gzip, deflate',
             'Connection': 'keep-alive',
             'Upgrade-Insecure-Requests': '1',
             'Sec-Fetch-Dest': 'document',
@@ -77,7 +77,42 @@ def fetch_site_safely(url: str, timeout: int = 15, max_retries: int = 3) -> Dict
             result["retries"] = attempt
             
             if response.status_code in [200, 202]:
-                # 202 may have content (some APIs return this for async processing but with content)
+                # Check for garbled/binary response (brotli decoding issues)
+                if response.text and len(response.text) > 500:
+                    # Count suspicious control characters in first 500 chars
+                    sample = response.text[:500]
+                    suspicious_chars = sum(1 for c in sample if ord(c) < 32 and c not in '\n\r\t')
+                    
+                    if suspicious_chars > 20:  # Too many control characters, likely binary
+                        result["errors"].append(f"Garbled response detected (attempt {attempt + 1}), retrying without compression")
+                        # Retry with no compression
+                        try:
+                            clean_headers = headers.copy()
+                            clean_headers.pop('Accept-Encoding', None)
+                            
+                            clean_response = requests.get(
+                                url,
+                                timeout=timeout,
+                                headers=clean_headers,
+                                allow_redirects=True,
+                                verify=True
+                            )
+                            
+                            if clean_response.status_code == 200 and clean_response.text:
+                                result["html"] = clean_response.text
+                                result["status"] = clean_response.status_code
+                                result["final_url"] = clean_response.url
+                                result["errors"] = [f"Fixed garbled response on retry (attempt {attempt + 1})"]
+                                return result
+                        except Exception as clean_e:
+                            result["errors"].append(f"Clean retry failed: {str(clean_e)}")
+                            
+                        # If clean retry failed, continue with next attempt
+                        if attempt < max_retries - 1:
+                            time.sleep(1.5)
+                            continue
+                
+                # 202 may have content (some APIs return this for async processing but with content)  
                 if response.text and len(response.text) > 500:
                     result["html"] = response.text
                     result["errors"] = []
