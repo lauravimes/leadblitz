@@ -1172,6 +1172,7 @@ async def api_search(request: SearchRequest, background_tasks: BackgroundTasks, 
         if leads_found > 0:
             credit_manager.deduct_credits(
                 current_user.id,
+                "lead_search",
                 leads_found,
                 f"Lead search: {leads_found} leads for '{request.business_type}' in '{request.location}'"
             )
